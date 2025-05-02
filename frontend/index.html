@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nutrition Plan Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Nutrition Plan Generator</h1>
+
+        <form id="nutrition-form">
+            <h2>Your Profile</h2>
+            <label for="age">Age (years):</label>
+            <input type="number" id="age" required min="1">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="height_cm">Height (cm):</label>
+            <input type="number" id="height_cm" step="0.1" required min="1">
+
+            <label for="goal">Goal:</label>
+            <select id="goal" required>
+                <option value="">Select</option>
+                <option value="weight loss">Weight Loss</option>
+                <option value="weight gain">Weight Gain</option>
+                <option value="maintain">Maintain</option>
+            </select>
+
+            <label for="dietary_preference">Dietary Preference:</label>
+            <select id="dietary_preference" required>
+                <option value="">Select</option>
+                <option value="Veg">Veg</option>
+                <option value="Non-Veg">Non-Veg</option>
+            </select>
+
+            <label for="activity_level">Activity Level:</label>
+            <select id="activity_level" required>
+                <option value="">Select</option>
+                <option value="sedentary">Sedentary</option>
+                <option value="light">Light (1-3 days/week exercise)</option>
+                <option value="moderate">Moderate (3-5 days/week exercise)</option>
+                <option value="active">Active (6-7 days/week exercise)</option>
+                <option value="very active">Very Active (daily intense exercise)</option>
+            </select>
+
+            <h2>Current Status (Monthly Update)</h2>
+             <label for="weight_kg">Current Weight (kg):</label>
+            <input type="number" id="weight_kg" step="0.1" required min="1">
+
+            <!-- Simplified: Input for previous month's data -->
+            <!-- In a real app, this would come from the backend database -->
+            <h2>Previous Month's Progress (Optional)</h2>
+            <p>Enter data from your *last* weight update if you had one.</p>
+             <label for="last_month_weight">Last Month's Weight (kg):</label>
+            <input type="number" id="last_month_weight" step="0.1" min="1">
+
+             <label for="last_month_bmi">Last Month's BMI:</label>
+            <input type="number" id="last_month_bmi" step="0.01" min="0">
+
+             <label for="last_month_goal">Last Month's Goal:</label>
+             <select id="last_month_goal">
+                <option value="">Select (or leave blank)</option>
+                <option value="weight loss">Weight Loss</option>
+                <option value="weight gain">Weight Gain</option>
+                <option value="maintain">Maintain</option>
+            </select>
+
+
+            <button type="submit">Generate Plan</button>
+        </form>
+
+        <div id="loading" class="hidden">Generating plan...</div>
+        <div id="error-message" class="error hidden"></div>
+
+        <div id="results" class="hidden">
+            <h2>Your Results</h2>
+            <p><strong>Current BMI:</strong> <span id="result-bmi"></span></p>
+            <p><strong>Estimated Daily Targets:</strong> <span id="result-targets"></span></p>
+
+            <h3>Generated Diet Plan:</h3>
+            <p><strong>Overall Description:</strong> <span id="plan-description"></span></p>
+            <p><strong>Daily Macro Targets:</strong> <span id="plan-macro-targets"></span></p>
+
+            <div id="plan-details">
+                <!-- Daily plan details will be inserted here -->
+            </div>
+
+            <p style="font-style: italic; margin-top: 20px;"><span id="plan-disclaimer"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
